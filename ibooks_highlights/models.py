@@ -6,6 +6,7 @@ import frontmatter
 from typing import (List, Dict, Optional, Union, Any, Callable)
 from dateutil import parser as duparser
 from slugify import slugify
+from icecream import ic
 
 from ibooks_highlights.util import (
     cmp_to_key, query_compare_no_asset_id, TEMPLATE_ENVIRONMENT,
@@ -168,7 +169,7 @@ class Book(object):
             else:
                 return False
 
-        if len(self._annotations) is 0:
+        if len(self._annotations) == 0:
             return False
 
         anno_max = max([
@@ -224,6 +225,8 @@ class Book(object):
             for anno in self._annotations
         ])
         mod_date_str = mod_date.isoformat()
+
+        ic(self.content, self._asset_id, self.title, self.author, mod_date_str)
 
         fmpost = frontmatter.Post(
             self.content,
