@@ -42,7 +42,8 @@ class Annotation(object):
     def __getitem__(self, key: str) -> Any:
         return getattr(self, key)
 
-
+    def __repr__(self) -> str:
+        return f'Annotation({self.location}, {self.selected_text}, {self.note}, {self.represent_text}, {self.chapter}, {self.style}, {self.modified_date})'
 class Book(object):
 
     def __init__(self, asset_id: str=None, 
@@ -127,6 +128,9 @@ class Book(object):
         if self.is_modified:
             mod = '*'
         return f'{asset_id} {mod} {self.num_annotations}\t{self._title}'
+    
+    def __repr__(self) -> str:
+        return self.__str__()
 
     def _yaml_str(cls, txt: str) -> str:
         exp = '[^A-Za-z0-9 ]+'
@@ -319,6 +323,7 @@ class BookList(object):
                 modified_date=dt.datetime.fromtimestamp(
                     NS_TIME_INTERVAL_SINCE_1970 + int(r['modified_date'])),
             )
+
             anno_group[asset_id].append(anno)
 
         for asset_id, anno_itr in anno_group.items():
