@@ -8,7 +8,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 setup(
-    name='ibooks-highlights',
+    name='ibooks',
 
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
@@ -102,7 +102,7 @@ setup(
     # "scripts" keyword. Entry points provide cross-platform support and allow
     # pip to create the appropriate form of executable for the target platform.
     scripts=[
-        'scripts/ibooks-highlights.py',
+        'ibooks.py',
     ],
     # entry_points={
     #     'console_scripts': [
