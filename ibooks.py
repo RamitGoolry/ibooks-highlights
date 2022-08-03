@@ -5,6 +5,7 @@ import pathlib
 
 from ibooks_highlights.models import BookList
 from ibooks_highlights import ibooksdb
+
 from random import choice
 
 import os
@@ -57,7 +58,7 @@ def format_annotation(annotation, note, book_name, width = 60):
 
     max_width = 0
 
-    if fit_note != None:
+    if fit_note is not None:
         max_width = max(max(len(s) for s in fit_annotation), max(len(s) for s in fit_note))
     else:
         max_width = max(len(s) for s in fit_annotation)
@@ -69,7 +70,7 @@ def format_annotation(annotation, note, book_name, width = 60):
     for s in fit_annotation:
         res.append('│' + (' ' + s + ' ' * size)[:size] + '│')
 
-    if fit_note != None:
+    if fit_note is not None:
         res.append(MIDDLE_LEFT + '─' * size + MIDDLE_RIGHT)
 
         for s in fit_note:
