@@ -64,14 +64,14 @@ def get_ibooks_database() -> sqlite3.Cursor:
 
     sqlite_files = list(ANNOTATION_DB_PATH.glob("*.sqlite"))
 
-    if len(sqlite_files) is 0:
+    if len(sqlite_files) == 0:
         raise FileNotFoundError("iBooks database not found")
     else:
         sqlite_file = sqlite_files[0]
 
     assets_files = list(BOOK_DB_PATH.glob("*.sqlite"))
 
-    if len(assets_files) is 0:
+    if len(assets_files) == 0:
         raise FileNotFoundError("iBooks assets database not found")
     else:
         assets_file = assets_files[0]
